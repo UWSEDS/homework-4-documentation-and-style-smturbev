@@ -21,7 +21,10 @@ COL_LIST = ['Date', 'Fremont Bridge East Sidewalk', 'Fremont Bridge West Sidewal
 COL_TYPES = DF.dtypes
 
 def test_colnames():
-    '''From HW2 - Tests that columns names match those in given list'''
+    '''
+    Passes pytest if all the column names match those
+    given in COL_LIST
+    '''
     col_num_match = True
     col_names_match = True
     col_names = DF.columns
@@ -35,7 +38,7 @@ def test_colnames():
     assert col_num_match and col_names_match
 
 def test_columntype():
-    '''From HW2 - Tests that each column entry is of the same type'''
+    '''Passes pytest if each column entry is of the same type'''
     column_type_match = True
     for i in COL_LIST:
         column_values = DF[i].to_list()
@@ -46,20 +49,20 @@ def test_columntype():
     assert column_type_match
 
 def test_rownum_10():
-    '''From HW2 - Tests that there are more than 10 rows in the dataframe'''
+    '''Passes if there are more than 10 rows in the dataframe'''
     nrows, _ = DF.shape
     if nrows < 10:
         assert False
     assert True
 
 def test_rownum_1():
-    '''Tests that there is at least one row of data in dataframe'''
+    '''Passes if there is at least one row of data in dataframe'''
     row_num, _ = DF.shape
     row_num_pass = bool(row_num > 1)
     assert row_num_pass
 
 def test_nan():
-    '''Tests for NaN values -- if there are NaNs, fail'''
+    '''Fails pytest if NaN values are present in the dataframe values'''
     no_nans = True
     for i in COL_LIST:
         col_vals = DF[i].to_list()
@@ -72,7 +75,10 @@ def test_nan():
     assert no_nans
 
 def test_columtypesmatch():
-    '''Tests that types of each column matches given column types'''
+    '''
+    Passes if the types of each column in the dataframe
+    matches given column types, COL_TYPES
+    '''
     col_types = DF.dtypes
     print(col_types)
     print(COL_TYPES)
